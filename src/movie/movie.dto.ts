@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsNumber, IsDate, IsUrl } from 'class-validator';
+import { IsNotEmpty, IsString, IsNumber, IsDateString, IsUrl } from 'class-validator';
 export class MovieDto {
     @IsString()
     @IsNotEmpty()
@@ -16,7 +16,7 @@ export class MovieDto {
     @IsNotEmpty()
     readonly country: string;
 
-    @IsDate()
+    @IsDateString()
     @IsNotEmpty()
     readonly releaseDate: Date;
 

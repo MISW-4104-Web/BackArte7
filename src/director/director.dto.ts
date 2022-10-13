@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsDate, IsUrl } from 'class-validator';
+import { IsNotEmpty, IsString, IsDateString, IsUrl } from 'class-validator';
 export class DirectorDto {
     @IsString()
     @IsNotEmpty()
@@ -12,7 +12,7 @@ export class DirectorDto {
     @IsNotEmpty()
     readonly nationality: string;
 
-    @IsDate()
+    @IsDateString()
     @IsNotEmpty()
     readonly birthDate: Date;
 
