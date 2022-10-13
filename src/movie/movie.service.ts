@@ -12,10 +12,6 @@ export class MovieService {
     constructor(
         @InjectRepository(MovieEntity)
         private readonly movieRepository: Repository<MovieEntity>,
-        @InjectRepository(GenreEntity)
-        private readonly genreRepository: Repository<GenreEntity>,
-        @InjectRepository(DirectorEntity)
-        private readonly directorRepository: Repository<DirectorEntity>,
         @InjectRepository(YoutubeTrailerEntity)
         private readonly youtubeTrailerRepository: Repository<YoutubeTrailerEntity>,
     ) { }
