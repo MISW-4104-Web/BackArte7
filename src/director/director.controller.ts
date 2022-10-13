@@ -8,7 +8,7 @@ import { DirectorService } from './director.service';
 @Controller('directors')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class DirectorController {
-    constructor(private readonly directorService: DirectorService) {}
+    constructor(private readonly directorService: DirectorService) { }
 
     @Get()
     async findAll(): Promise<DirectorEntity[]> {
@@ -35,5 +35,5 @@ export class DirectorController {
     async delete(@Param('directorId') directorId: string): Promise<void> {
         await this.directorService.delete(directorId);
     }
-    
+
 }

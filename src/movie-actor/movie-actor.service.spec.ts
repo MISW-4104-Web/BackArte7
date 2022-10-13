@@ -102,7 +102,7 @@ describe('MovieActorService', () => {
     expect(storedActor.photo).toEqual(actor.photo);
     expect(storedActor.nationality).toEqual(actor.nationality);
     expect(storedActor.birthDate).toEqual(actor.birthDate);
-    expect(storedActor.biography).toEqual(actor.biography);    
+    expect(storedActor.biography).toEqual(actor.biography);
   });
 
   it('findActorFromMovie should throw an exception for an invalid movie', async () => {
@@ -142,7 +142,7 @@ describe('MovieActorService', () => {
     expect(updatedMovie.actors[0].nationality).toEqual(actor.nationality);
     expect(updatedMovie.actors[0].birthDate).toEqual(actor.birthDate);
     expect(updatedMovie.actors[0].biography).toEqual(actor.biography);
-    });
+  });
 
   it('updateActorsFromMovie should throw an exception for an invalid movie', async () => {
     const actor: ActorEntity = await actorRepository.save({
@@ -173,7 +173,7 @@ describe('MovieActorService', () => {
 
     await service.deleteActorFromMovie(movie.id, actor.id);
 
-    const storedMovie: MovieEntity = await movieRepository.findOne({where: {id: movie.id}, relations: ['actors'] });
+    const storedMovie: MovieEntity = await movieRepository.findOne({ where: { id: movie.id }, relations: ['actors'] });
     const deletedActor = storedMovie.actors.find(a => a.id === actor.id);
 
     expect(deletedActor).toBeUndefined();
@@ -198,6 +198,6 @@ describe('MovieActorService', () => {
     });
 
     await expect(service.deleteActorFromMovie(movie.id, actor.id)).rejects.toHaveProperty("message", "The actor with the given id is not associated to the movie");
-  }); 
+  });
 
 });

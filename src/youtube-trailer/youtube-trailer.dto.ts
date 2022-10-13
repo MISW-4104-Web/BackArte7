@@ -1,4 +1,4 @@
-import {IsNotEmpty, IsString, IsNumber, IsUrl} from 'class-validator';
+import { IsNotEmpty, IsString, IsNumber, IsUrl } from 'class-validator';
 export class YoutubeTrailerDto {
     @IsString()
     @IsNotEmpty()

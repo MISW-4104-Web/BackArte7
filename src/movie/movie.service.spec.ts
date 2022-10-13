@@ -245,7 +245,7 @@ describe('MovieService', () => {
   it('create should throw an exception for an invalid youtube trailer', async () => {
     const nonSavedYoutubeTrailer: YoutubeTrailerEntity = {
       id: "",
-      name: faker.name.firstName(), 
+      name: faker.name.firstName(),
       url: faker.image.imageUrl(),
       duration: faker.datatype.number(),
       channel: faker.name.firstName(),

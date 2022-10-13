@@ -12,20 +12,7 @@ export class GenreMovieService {
         private readonly genreRepository: Repository<GenreEntity>,
         @InjectRepository(MovieEntity)
         private readonly movieRepository: Repository<MovieEntity>,
-    ) {}
-
-    async addMovieToGenre(genreId: string, movieId: string): Promise<MovieEntity> {
-        const genre: GenreEntity = await this.genreRepository.findOne({ where: { id: genreId }, relations: ['movies'] });
-        if (!genre)
-            throw new BusinessLogicException("The genre with the given id was not found", BusinessError.NOT_FOUND);
-        
-        const movie: MovieEntity = await this.movieRepository.findOne({ where: { id: movieId } });
-        if (!movie)
-            throw new BusinessLogicException("The movie with the given id was not found", BusinessError.NOT_FOUND);
-
-        movie.genre = genre; 
-        return await this.movieRepository.save(movie);
-    }
+    ) { }
 
     async findMoviesFromGenre(genreId: string): Promise<MovieEntity[]> {
         const genre: GenreEntity = await this.genreRepository.findOne({ where: { id: genreId }, relations: ['movies'] });
@@ -49,13 +36,26 @@ export class GenreMovieService {
         return movie;
     }
 
+    async addMovieToGenre(genreId: string, movieId: string): Promise<MovieEntity> {
+        const genre: GenreEntity = await this.genreRepository.findOne({ where: { id: genreId }, relations: ['movies'] });
+        if (!genre)
+            throw new BusinessLogicException("The genre with the given id was not found", BusinessError.NOT_FOUND);
+
+        const movie: MovieEntity = await this.movieRepository.findOne({ where: { id: movieId } });
+        if (!movie)
+            throw new BusinessLogicException("The movie with the given id was not found", BusinessError.NOT_FOUND);
+
+        movie.genre = genre;
+        return await this.movieRepository.save(movie);
+    }
+
     async updateMoviesFromGenre(genreId: string, movies: MovieEntity[]): Promise<MovieEntity[]> {
         const updatedMovies: MovieEntity[] = [];
 
         const genre: GenreEntity = await this.genreRepository.findOne({ where: { id: genreId }, relations: ['movies'] });
         if (!genre)
             throw new BusinessLogicException("The genre with the given id was not found", BusinessError.NOT_FOUND);
-        
+
         for (const movie of movies) {
             const persistedMovie: MovieEntity = await this.movieRepository.findOne({ where: { id: movie.id } });
             if (!persistedMovie)
@@ -63,7 +63,7 @@ export class GenreMovieService {
             persistedMovie.genre = genre;
             updatedMovies.push(await this.movieRepository.save(persistedMovie));
         }
-        
+
         return updatedMovies;
     }
 

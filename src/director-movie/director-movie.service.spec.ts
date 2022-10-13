@@ -41,7 +41,7 @@ describe('DirectorMovieService', () => {
       });
       moviesList.push(movie);
     }
-    
+
     director = await directorRepository.save({
       name: faker.name.firstName(),
       photo: faker.image.imageUrl(),
@@ -86,7 +86,7 @@ describe('DirectorMovieService', () => {
       popularity: faker.datatype.number(),
     });
 
-    await expect(service.addMovieToDirector("0", movie.id)).rejects.toHaveProperty("message", "The director with the given id was not found");  
+    await expect(service.addMovieToDirector("0", movie.id)).rejects.toHaveProperty("message", "The director with the given id was not found");
   });
 
   it('addMovieToDirector should throw an exception for an invalid movie', async () => {

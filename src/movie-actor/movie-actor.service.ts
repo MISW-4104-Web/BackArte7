@@ -12,19 +12,7 @@ export class MovieActorService {
         private readonly movieRepository: Repository<MovieEntity>,
         @InjectRepository(ActorEntity)
         private readonly actorRepository: Repository<ActorEntity>,
-    ) {}
-
-    async addActorToMovie(movieId: string, actorId: string): Promise<MovieEntity> {
-        const movie: MovieEntity = await this.movieRepository.findOne({ where: { id: movieId }, relations: ['actors'] });
-        if (!movie)
-            throw new BusinessLogicException("The movie with the given id was not found", BusinessError.NOT_FOUND);
-        const actor: ActorEntity = await this.actorRepository.findOne({ where: { id: actorId } });
-        if (!actor)
-            throw new BusinessLogicException("The actor with the given id was not found", BusinessError.NOT_FOUND);
-
-        movie.actors = [...movie.actors, actor];
-        return await this.movieRepository.save(movie);
-    }
+    ) { }
 
     async findActorsFromMovie(movieId: string): Promise<ActorEntity[]> {
         const movie: MovieEntity = await this.movieRepository.findOne({ where: { id: movieId }, relations: ['actors'] });
@@ -46,6 +34,18 @@ export class MovieActorService {
             throw new BusinessLogicException("The actor with the given id is not associated to the movie", BusinessError.PRECONDITION_FAILED);
 
         return actor;
+    }
+
+    async addActorToMovie(movieId: string, actorId: string): Promise<MovieEntity> {
+        const movie: MovieEntity = await this.movieRepository.findOne({ where: { id: movieId }, relations: ['actors'] });
+        if (!movie)
+            throw new BusinessLogicException("The movie with the given id was not found", BusinessError.NOT_FOUND);
+        const actor: ActorEntity = await this.actorRepository.findOne({ where: { id: actorId } });
+        if (!actor)
+            throw new BusinessLogicException("The actor with the given id was not found", BusinessError.NOT_FOUND);
+
+        movie.actors = [...movie.actors, actor];
+        return await this.movieRepository.save(movie);
     }
 
     async updateActorsFromMovie(movieId: string, actors: ActorEntity[]): Promise<MovieEntity> {
@@ -73,7 +73,7 @@ export class MovieActorService {
         const actorIndex: number = movie.actors.findIndex(actor => actor.id === actorId);
         if (actorIndex === -1)
             throw new BusinessLogicException("The actor with the given id is not associated to the movie", BusinessError.PRECONDITION_FAILED);
-        
+
         movie.actors.splice(actorIndex, 1);
         await this.movieRepository.save(movie);
     }

@@ -8,7 +8,7 @@ import { ActorService } from './actor.service';
 @Controller('actor')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class ActorController {
-    constructor(private readonly actorService: ActorService) {}
+    constructor(private readonly actorService: ActorService) { }
 
     @Get()
     async findAll(): Promise<ActorEntity[]> {
@@ -35,5 +35,5 @@ export class ActorController {
     async delete(@Param('actorId') actorId: string): Promise<void> {
         await this.actorService.delete(actorId);
     }
-    
+
 }

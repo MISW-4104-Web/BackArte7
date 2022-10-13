@@ -1,4 +1,4 @@
-import {IsNotEmpty, IsString, IsDate, IsUrl} from 'class-validator';
+import { IsNotEmpty, IsString, IsDate, IsUrl } from 'class-validator';
 export class DirectorDto {
     @IsString()
     @IsNotEmpty()

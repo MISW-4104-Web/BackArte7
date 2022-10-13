@@ -34,13 +34,13 @@ export class MovieService {
     async create(movie: MovieEntity): Promise<MovieEntity> {
         if (movie.genre == null)
             throw new BusinessLogicException("The movie must have a genre", BusinessError.PRECONDITION_FAILED);
-        
+
         if (movie.director == null)
             throw new BusinessLogicException("The movie must have a director", BusinessError.PRECONDITION_FAILED);
-        
+
         if (movie.youtubeTrailer == null)
             throw new BusinessLogicException("The movie must have a youtube trailer", BusinessError.PRECONDITION_FAILED);
-        
+
         const genre: GenreEntity = await this.movieRepository.manager.getRepository(GenreEntity).findOne({ where: { id: movie.genre.id } });
         if (!genre)
             throw new BusinessLogicException("The genre with the given id was not found", BusinessError.NOT_FOUND);
@@ -48,7 +48,7 @@ export class MovieService {
         const director: DirectorEntity = await this.movieRepository.manager.getRepository(DirectorEntity).findOne({ where: { id: movie.director.id } });
         if (!director)
             throw new BusinessLogicException("The director with the given id was not found", BusinessError.NOT_FOUND);
-        
+
         const youtubeTrailer: YoutubeTrailerEntity = await this.youtubeTrailerRepository.findOne({ where: { id: movie.youtubeTrailer.id } });
         if (!youtubeTrailer)
             throw new BusinessLogicException("The youtube trailer with the given id was not found", BusinessError.NOT_FOUND);
@@ -66,7 +66,7 @@ export class MovieService {
 
         if (movie.genre == null)
             throw new BusinessLogicException("The movie must have a genre", BusinessError.PRECONDITION_FAILED);
-        
+
         if (movie.director == null)
             throw new BusinessLogicException("The movie must have a director", BusinessError.PRECONDITION_FAILED);
 
@@ -76,11 +76,11 @@ export class MovieService {
         const genre: GenreEntity = await this.movieRepository.manager.getRepository(GenreEntity).findOne({ where: { id: movie.genre.id } });
         if (!genre)
             throw new BusinessLogicException("The genre with the given id was not found", BusinessError.NOT_FOUND);
-        
+
         const director: DirectorEntity = await this.movieRepository.manager.getRepository(DirectorEntity).findOne({ where: { id: movie.director.id } });
         if (!director)
             throw new BusinessLogicException("The director with the given id was not found", BusinessError.NOT_FOUND);
-        
+
         const youtubeTrailer: YoutubeTrailerEntity = await this.youtubeTrailerRepository.findOne({ where: { id: movie.youtubeTrailer.id } });
         if (!youtubeTrailer)
             throw new BusinessLogicException("The youtube trailer with the given id was not found", BusinessError.NOT_FOUND);

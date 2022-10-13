@@ -12,19 +12,7 @@ export class DirectorMovieService {
         private readonly directorRepository: Repository<DirectorEntity>,
         @InjectRepository(MovieEntity)
         private readonly movieRepository: Repository<MovieEntity>,
-    ) {}
-
-    async addMovieToDirector(directorId: string, movieId: string): Promise<MovieEntity> {
-        const director: DirectorEntity = await this.directorRepository.findOne({ where: { id: directorId }, relations: ['movies'] });
-        if (!director)
-            throw new BusinessLogicException("The director with the given id was not found", BusinessError.NOT_FOUND);
-        const movie: MovieEntity = await this.movieRepository.findOne({ where: { id: movieId } });
-        if (!movie)
-            throw new BusinessLogicException("The movie with the given id was not found", BusinessError.NOT_FOUND);
-
-        movie.director = director;
-        return await this.movieRepository.save(movie);
-    }
+    ) { }
 
     async findMoviesFromDirector(directorId: string): Promise<MovieEntity[]> {
         const director: DirectorEntity = await this.directorRepository.findOne({ where: { id: directorId }, relations: ['movies'] });
@@ -46,6 +34,18 @@ export class DirectorMovieService {
             throw new BusinessLogicException("The movie with the given id is not associated to the director", BusinessError.PRECONDITION_FAILED);
 
         return movie;
+    }
+
+    async addMovieToDirector(directorId: string, movieId: string): Promise<MovieEntity> {
+        const director: DirectorEntity = await this.directorRepository.findOne({ where: { id: directorId }, relations: ['movies'] });
+        if (!director)
+            throw new BusinessLogicException("The director with the given id was not found", BusinessError.NOT_FOUND);
+        const movie: MovieEntity = await this.movieRepository.findOne({ where: { id: movieId } });
+        if (!movie)
+            throw new BusinessLogicException("The movie with the given id was not found", BusinessError.NOT_FOUND);
+
+        movie.director = director;
+        return await this.movieRepository.save(movie);
     }
 
     async updateMoviesFromDirector(directorId: string, movies: MovieEntity[]): Promise<MovieEntity[]> {

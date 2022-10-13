@@ -77,7 +77,7 @@ describe('PlatformMovieService', () => {
       popularity: faker.datatype.number(),
     });
 
-    await expect(service.addMovieToPlatform("0", movie.id)).rejects.toHaveProperty("message", "The platform with the given id was not found");  
+    await expect(service.addMovieToPlatform("0", movie.id)).rejects.toHaveProperty("message", "The platform with the given id was not found");
   });
 
   it('addMovieToPlatform should throw an exception for an invalid movie', async () => {
@@ -178,7 +178,7 @@ describe('PlatformMovieService', () => {
 
     await service.deleteMovieFromPlatform(platform.id, movie.id);
 
-    const storedPlatform: PlatformEntity = await platformRepository.findOne({where: {id: platform.id}, relations: ['movies'] });
+    const storedPlatform: PlatformEntity = await platformRepository.findOne({ where: { id: platform.id }, relations: ['movies'] });
     const deletedMovie = storedPlatform.movies.find(m => m.id === movie.id);
 
     expect(deletedMovie).toBeUndefined();
@@ -204,6 +204,6 @@ describe('PlatformMovieService', () => {
     });
 
     await expect(service.deleteMovieFromPlatform(platform.id, movie.id)).rejects.toHaveProperty("message", "The movie with the given id is not associated to the platform");
-  }); 
+  });
 
 });

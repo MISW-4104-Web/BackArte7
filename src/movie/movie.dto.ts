@@ -1,4 +1,4 @@
-import {IsNotEmpty, IsString, IsNumber, IsDate, IsUrl} from 'class-validator';
+import { IsNotEmpty, IsString, IsNumber, IsDate, IsUrl } from 'class-validator';
 export class MovieDto {
     @IsString()
     @IsNotEmpty()

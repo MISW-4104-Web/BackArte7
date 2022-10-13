@@ -50,7 +50,7 @@ describe('GenreMovieService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
-  }); 
+  });
 
   it('addMovieToGenre should return the movie added', async () => {
     const movie: MovieEntity = await movieRepository.save({

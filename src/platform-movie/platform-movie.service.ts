@@ -12,7 +12,7 @@ export class PlatformMovieService {
         private readonly platformRepository: Repository<PlatformEntity>,
         @InjectRepository(MovieEntity)
         private readonly movieRepository: Repository<MovieEntity>,
-    ) {}
+    ) { }
 
     async addMovieToPlatform(platformId: string, movieId: string): Promise<PlatformEntity> {
         const platform: PlatformEntity = await this.platformRepository.findOne({ where: { id: platformId }, relations: ['movies'] });
@@ -63,7 +63,7 @@ export class PlatformMovieService {
         return await this.platformRepository.save(platform);
     }
 
-    async deleteMovieFromPlatform(platformId: string, movieId: string): Promise<PlatformEntity> {   
+    async deleteMovieFromPlatform(platformId: string, movieId: string): Promise<PlatformEntity> {
         const platform: PlatformEntity = await this.platformRepository.findOne({ where: { id: platformId }, relations: ['movies'] });
         if (!platform)
             throw new BusinessLogicException("The platform with the given id was not found", BusinessError.NOT_FOUND);
