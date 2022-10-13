@@ -23,7 +23,7 @@ import { PlatformMovieModule } from './platform-movie/platform-movie.module';
       username: 'postgres',
       password: 'postgres',
       database: 'arte7',
-      entities: [__dirname + '/**/*.entity.ts'],
+      entities: [__dirname + '/**/*.entity.{js,ts}'],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,
