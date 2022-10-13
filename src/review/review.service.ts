@@ -25,7 +25,7 @@ export class ReviewService {
         const movie: MovieEntity = await this.movieRepository.findOne({ where: { id: movieId }, relations: ['reviews'] });
         if (!movie)
             throw new BusinessLogicException("The movie with the given id was not found", BusinessError.NOT_FOUND);
-        const persistedReview: ReviewEntity = await this.reviewRepository.findOne({ where: { id: reviewId }, relations: ['movie'] });
+        const persistedReview: ReviewEntity = await this.reviewRepository.findOne({ where: { id: reviewId } });
         if (!persistedReview)
             throw new BusinessLogicException("The review with the given id was not found", BusinessError.NOT_FOUND);
         const review: ReviewEntity = movie.reviews.find(r => r.id === reviewId);
@@ -35,10 +35,13 @@ export class ReviewService {
     }
 
     async create(movieId: string, review: ReviewEntity): Promise<ReviewEntity> {
-        const movie: MovieEntity = await this.movieRepository.findOne({ where: { id: movieId }, relations: ['reviews'] });
+        const movie: MovieEntity = await this.movieRepository.findOne({ where: { id: movieId } });
         if (!movie)
             throw new BusinessLogicException("The movie with the given id was not found", BusinessError.NOT_FOUND);
         review.movie = movie;
+        if (review.score > 5 || review.score < 0)
+            throw new BusinessLogicException("The score must be between 0 and 5", BusinessError.BAD_REQUEST);
+
         return await this.reviewRepository.save(review);
     }
 
@@ -46,12 +49,15 @@ export class ReviewService {
         const movie: MovieEntity = await this.movieRepository.findOne({ where: { id: movieId }, relations: ['reviews'] });
         if (!movie)
             throw new BusinessLogicException("The movie with the given id was not found", BusinessError.NOT_FOUND);
-        const persistedReview: ReviewEntity = await this.reviewRepository.findOne({ where: { id: reviewId }, relations: ['movie'] });
+        const persistedReview: ReviewEntity = await this.reviewRepository.findOne({ where: { id: reviewId } });
         if (!persistedReview)
             throw new BusinessLogicException("The review with the given id was not found", BusinessError.NOT_FOUND);
         const reviewToUpdate: ReviewEntity = movie.reviews.find(r => r.id === reviewId);
         if (!reviewToUpdate)
             throw new BusinessLogicException("The review with the given id is not associated to the movie", BusinessError.NOT_FOUND);
+        if (review.score > 5 || review.score < 0)
+            throw new BusinessLogicException("The score must be between 0 and 5", BusinessError.BAD_REQUEST);
+
         return await this.reviewRepository.save({ ...reviewToUpdate, ...review });
     }
 
