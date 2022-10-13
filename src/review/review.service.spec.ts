@@ -32,7 +32,7 @@ describe('ReviewService', () => {
     for (let i = 0; i < 5; i++) {
       const review: ReviewEntity = await reviewRepository.save({
         text: faker.lorem.sentence(),
-        score: faker.datatype.number({ min: 0, max: 10 }),
+        score: faker.datatype.number({ min: 0, max: 5 }),
         creator: faker.name.firstName(),
       });
       reviewsList.push(review);
@@ -84,7 +84,7 @@ describe('ReviewService', () => {
   it('findOne should throw an exception for a non associated review', async () => {
     const nonAssociatedReview = await reviewRepository.save({
       text: faker.lorem.sentence(),
-      score: faker.datatype.number({ min: 0, max: 10 }),
+      score: faker.datatype.number({ min: 0, max: 5 }),
       creator: faker.name.firstName(),
     });
 
@@ -95,7 +95,7 @@ describe('ReviewService', () => {
     const review: ReviewEntity = {
       id: "",
       text: faker.lorem.sentence(),
-      score: faker.datatype.number({ min: 0, max: 10 }),
+      score: faker.datatype.number({ min: 0, max: 5 }),
       creator: faker.name.firstName(),
       movie
     };
@@ -114,7 +114,7 @@ describe('ReviewService', () => {
     const review: ReviewEntity = {
       id: "",
       text: faker.lorem.sentence(),
-      score: faker.datatype.number({ min: 0, max: 10 }),
+      score: faker.datatype.number({ min: 0, max: 5 }),
       creator: faker.name.firstName(),
       movie
     };
@@ -135,7 +135,7 @@ describe('ReviewService', () => {
   it('update should modify a review', async () => {
     const review: ReviewEntity = reviewsList[0];
     review.text = faker.lorem.sentence();
-    review.score = faker.datatype.number({ min: 0, max: 10 });
+    review.score = faker.datatype.number({ min: 0, max: 5 });
     review.creator = faker.name.firstName();
 
     const updatedReview: ReviewEntity = await service.update(movie.id, review.id, review);
@@ -157,7 +157,7 @@ describe('ReviewService', () => {
     review = {
       ...review,
       text: faker.lorem.sentence(),
-      score: faker.datatype.number({ min: 0, max: 10 }),
+      score: faker.datatype.number({ min: 0, max: 5 }),
       creator: faker.name.firstName(),
     };
     await expect(() => service.update(movie.id, "0", review)).rejects.toHaveProperty("message", "The review with the given id was not found");
@@ -166,7 +166,7 @@ describe('ReviewService', () => {
   it('update should throw an exception for a non associated review', async () => {
     const nonAssociatedReview = await reviewRepository.save({
       text: faker.lorem.sentence(),
-      score: faker.datatype.number({ min: 0, max: 10 }),
+      score: faker.datatype.number({ min: 0, max: 5 }),
       creator: faker.name.firstName(),
     });
 
