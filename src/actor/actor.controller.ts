@@ -5,7 +5,7 @@ import { ActorDto } from './actor.dto';
 import { ActorEntity } from './actor.entity';
 import { ActorService } from './actor.service';
 
-@Controller('actor')
+@Controller('actors')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class ActorController {
     constructor(private readonly actorService: ActorService) { }
