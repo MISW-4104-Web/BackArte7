@@ -77,5 +77,4 @@ export class MovieActorService {
         movie.actors.splice(actorIndex, 1);
         await this.movieRepository.save(movie);
     }
-
 }

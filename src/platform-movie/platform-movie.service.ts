@@ -77,5 +77,4 @@ export class PlatformMovieService {
         platform.movies.splice(movieIndex, 1);
         return await this.platformRepository.save(platform);
     }
-
 }

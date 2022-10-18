@@ -81,7 +81,7 @@ describe('MovieActorService', () => {
     await expect(service.addActorToMovie("0", actor.id)).rejects.toHaveProperty("message", "The movie with the given id was not found");
   });
 
-  it('addActorToMovie should throw an exception for an invalid movie', async () => {
+  it('addActorToMovie should throw an exception for an invalid actor', async () => {
     await expect(service.addActorToMovie(movie.id, "0")).rejects.toHaveProperty("message", "The actor with the given id was not found");
   });
 
