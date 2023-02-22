@@ -13,6 +13,13 @@ import { MovieActorModule } from './movie-actor/movie-actor.module';
 import { PlatformMovieModule } from './platform-movie/platform-movie.module';
 import { ActorMovieModule } from './actor-movie/actor-movie.module';
 import { MoviePlatformModule } from './movie-platform/movie-platform.module';
+import { ActorEntity } from './actor/actor.entity';
+import { MovieEntity } from './movie/movie.entity';
+import { DirectorEntity } from './director/director.entity';
+import { PlatformEntity } from './platform/platform.entity';
+import { GenreEntity } from './genre/genre.entity';
+import { ReviewEntity } from './review/review.entity';
+import { YoutubeTrailerEntity } from './youtube-trailer/youtube-trailer.entity';
 
 @Module({
   imports: [MovieModule, DirectorModule, ActorModule, GenreModule, PlatformModule, ReviewModule, YoutubeTrailerModule,
@@ -23,10 +30,12 @@ import { MoviePlatformModule } from './movie-platform/movie-platform.module';
       username: 'postgres',
       password: 'postgres',
       database: 'arte7',
-      entities: [__dirname + '/**/*.entity.{js,ts}'],
+      entities: [ActorEntity, DirectorEntity, GenreEntity, MovieEntity, PlatformEntity, ReviewEntity, YoutubeTrailerEntity],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,
+      migrations: [__dirname + '/shared/migrations/**/*{.ts,.js}'],
+      migrationsRun: true,
     }),
     MovieActorModule,
     PlatformMovieModule,
