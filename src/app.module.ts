@@ -45,6 +45,8 @@ import { YoutubeTrailerEntity } from './youtube-trailer/youtube-trailer.entity';
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,
+      migrations: [__dirname + '/shared/migrations/**/*{.ts,.js}'],
+      migrationsRun: true,
     }),
   ],
   controllers: [AppController],
