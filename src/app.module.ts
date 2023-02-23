@@ -20,6 +20,7 @@ import { PlatformEntity } from './platform/platform.entity';
 import { GenreEntity } from './genre/genre.entity';
 import { ReviewEntity } from './review/review.entity';
 import { YoutubeTrailerEntity } from './youtube-trailer/youtube-trailer.entity';
+import { dataSourceOptions } from 'db/data-source';
 
 @Module({
   imports: [
@@ -41,10 +42,9 @@ import { YoutubeTrailerEntity } from './youtube-trailer/youtube-trailer.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'arte7',
-      entities: [ActorEntity, DirectorEntity, GenreEntity, MovieEntity, PlatformEntity, ReviewEntity, YoutubeTrailerEntity],
+      entities: ['dist/**/*.entity.js'],
       dropSchema: true,
       synchronize: true,
-      keepConnectionAlive: true,
       migrations: [__dirname + '/shared/migrations/**/*{.ts,.js}'],
       migrationsRun: true,
     }),
