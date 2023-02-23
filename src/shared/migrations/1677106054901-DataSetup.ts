@@ -748,6 +748,9 @@ insert into review_entity (id, text, score, creator, "movieId") values ('3785ecb
 insert into review_entity (id, text, score, creator, "movieId") values ('d1435738-80e5-45c0-819d-e74ee9134ece', 'Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis.', 1, 'Astra Weeke', '4c00b960-8c05-48ef-90db-7565c01db3c1');
 insert into review_entity (id, text, score, creator, "movieId") values ('e5991137-1788-4572-ad68-9ea1992a0cda', 'Nullam porttitor lacus at turpis.', 3, 'Roxane Thonger', '0c345602-453e-49ae-9218-7d8370107e50');
 
+--Update poster
+
+update movie_entity set poster = 'http://dummyimage.com/107x100.png/ff4444/ffffff';
     `;
 
     public async up(queryRunner: QueryRunner): Promise<void> {
