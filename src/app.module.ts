@@ -22,7 +22,18 @@ import { ReviewEntity } from './review/review.entity';
 import { YoutubeTrailerEntity } from './youtube-trailer/youtube-trailer.entity';
 
 @Module({
-  imports: [MovieModule, DirectorModule, ActorModule, GenreModule, PlatformModule, ReviewModule, YoutubeTrailerModule,
+  imports: [
+    MovieModule, 
+    DirectorModule, 
+    ActorModule, 
+    GenreModule, 
+    PlatformModule, 
+    ReviewModule, 
+    YoutubeTrailerModule,
+    MovieActorModule,
+    PlatformMovieModule,
+    ActorMovieModule,
+    MoviePlatformModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -34,13 +45,7 @@ import { YoutubeTrailerEntity } from './youtube-trailer/youtube-trailer.entity';
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,
-      migrations: [__dirname + '/shared/migrations/**/*{.ts,.js}'],
-      migrationsRun: true,
     }),
-    MovieActorModule,
-    PlatformMovieModule,
-    ActorMovieModule,
-    MoviePlatformModule,
   ],
   controllers: [AppController],
   providers: [AppService],

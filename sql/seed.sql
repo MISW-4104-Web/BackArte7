@@ -1,8 +1,4 @@
-import {MigrationInterface, QueryRunner} from "typeorm";
-
-export class DataSetup1677106054900 implements MigrationInterface {
-    migration = `
-    -- actor entity
+-- Actor
 
 insert into actor_entity (id, name, photo, nationality, "birthDate", biography) values ('fa540a31-2c26-42dc-afb5-2cd30af6a88e', 'Barnett Campagne', 'http://dummyimage.com/237x100.png/cc0000/ffffff', 'Ireland', '1995-12-20', 'Reactive dynamic hardware');
 insert into actor_entity (id, name, photo, nationality, "birthDate", biography) values ('4499e858-3ea4-47c3-8515-32f85d32bbc2', 'Godiva Durran', 'http://dummyimage.com/228x100.png/dddddd/000000', 'China', '2000-07-22', 'Digitized human-resource process improvement');
@@ -106,7 +102,7 @@ insert into actor_entity (id, name, photo, nationality, "birthDate", biography) 
 insert into actor_entity (id, name, photo, nationality, "birthDate", biography) values ('40be5aa9-ca5b-4e8d-9332-390f9c156449', 'Errick Jantet', 'http://dummyimage.com/169x100.png/ff4444/ffffff', 'Russia', '1922-01-08', 'Decentralized tertiary monitoring');
 
 
--- Director entity
+--Director
 
 insert into director_entity (id, name, photo, nationality, "birthDate", biography) values ('5e942ab8-e045-4048-896c-8f79e5ce2bc7', 'Ursula Trippitt', 'http://dummyimage.com/161x100.png/dddddd/000000', 'Egypt', '1939-12-05', 'Stand-alone user-facing process improvement');
 insert into director_entity (id, name, photo, nationality, "birthDate", biography) values ('7910bf0b-f4d4-4137-bec7-d516fe1c7f0d', 'Lulu Kerford', 'http://dummyimage.com/209x100.png/cc0000/ffffff', 'Philippines', '1949-06-14', 'User-friendly human-resource Graphical User Interface');
@@ -210,7 +206,7 @@ insert into director_entity (id, name, photo, nationality, "birthDate", biograph
 insert into director_entity (id, name, photo, nationality, "birthDate", biography) values ('f69f2723-a4ea-495e-9bc1-4be019a6be33', 'Corey Trowl', 'http://dummyimage.com/104x100.png/5fa2dd/ffffff', 'Portugal', '2003-08-14', 'Cross-platform human-resource installation');
 
 
--- GenreEntity
+-- Genre
 
 insert into genre_entity (id, type) values ('2fb83849-05f9-4e4e-954b-5e736c2d7445', 'Drama');
 insert into genre_entity (id, type) values ('72b68ea2-cc16-4624-a5cf-91d18545a100', 'Crime');
@@ -223,7 +219,7 @@ insert into genre_entity (id, type) values ('720c08ea-cd55-47cf-9286-9acfba6da12
 insert into genre_entity (id, type) values ('f76ae1d2-7a93-4506-96e3-e3173a3ee7fb', 'Thriller');
 insert into genre_entity (id, type) values ('95f75c58-d439-4897-99a1-6397f64bdd79', 'Adventure');
 
--- PlatformEntity
+-- Platform
 
 insert into platform_entity (id, name, url) values ('e163fb4b-1d8f-4243-b6f0-e1aab5c16613', 'Zoombox', 'https://icq.com/sed/augue/aliquam/erat/volutpat/in.png');
 insert into platform_entity (id, name, url) values ('b83d2206-d9da-4612-b8fe-e26dd605b999', 'Jetwire', 'http://cpanel.net/felis.jsp');
@@ -231,7 +227,7 @@ insert into platform_entity (id, name, url) values ('a88e394f-fa04-4502-98bb-b6b
 insert into platform_entity (id, name, url) values ('d3bcd8d7-981a-4fc7-8a5c-b33fe55933d3', 'Brightbean', 'https://wsj.com/diam/vitae/quam/suspendisse/potenti/nullam/porttitor.xml');
 insert into platform_entity (id, name, url) values ('f59384e2-bec8-4113-8eb2-c41a67289c04', 'Skimia', 'https://typepad.com/sapien/varius/ut/blandit/non/interdum/in.png');
 
--- YoutubeTrailerEntity
+-- Youtube Trailer
 
 
 insert into youtube_trailer_entity (id, name, url, duration, channel) values ('fe4d0266-25e7-4b13-b89d-bdabfdef56c1', 'Official Trailer (HD)', 'http://yellowbook.com/at/vulputate/vitae/nisl/aenean.html', 2, 'interface');
@@ -336,7 +332,7 @@ insert into youtube_trailer_entity (id, name, url, duration, channel) values ('b
 insert into youtube_trailer_entity (id, name, url, duration, channel) values ('89bdf071-4b61-49aa-9f2a-2b500e492de2', 'Official Trailer (HD)', 'http://zdnet.com/eu/est/congue/elementum/in.jpg', 5, 'complexity');
 
 
---MovieEntity
+--Movie
 
 insert into movie_entity (id, title, poster, duration, country, "releaseDate", popularity, "directorId", "genreId", "youtubeTrailerId") values ('74d10db7-03b8-4050-a663-11814f611e52','Item, The','http://google.com.br/vel/est/donec.png',4,'Indonesia','1925-06-03',3,'5e942ab8-e045-4048-896c-8f79e5ce2bc7','2fb83849-05f9-4e4e-954b-5e736c2d7445','fe4d0266-25e7-4b13-b89d-bdabfdef56c1');
 insert into movie_entity (id, title, poster, duration, country, "releaseDate", popularity, "directorId", "genreId", "youtubeTrailerId") values ('06393d9b-e85d-44e7-94e4-90e6804e0336','Godzilla','http://who.int/orci/luctus/et.jsp',3,'Indonesia','1925-06-03',3,'7910bf0b-f4d4-4137-bec7-d516fe1c7f0d','72b68ea2-cc16-4624-a5cf-91d18545a100','7384f4a2-4f26-4954-900d-5a76e31d201c');
@@ -439,7 +435,7 @@ insert into movie_entity (id, title, poster, duration, country, "releaseDate", p
 insert into movie_entity (id, title, poster, duration, country, "releaseDate", popularity, "directorId", "genreId", "youtubeTrailerId") values ('4c00b960-8c05-48ef-90db-7565c01db3c1','Chain Lightning','http://mozilla.com/maecenas.aspx',1,'Japan','1925-06-03',2,'8c0f104e-df27-4528-ab05-6a03e3bbb81b','f76ae1d2-7a93-4506-96e3-e3173a3ee7fb','be7f131d-93ff-41c3-ab13-c93578a039da');
 insert into movie_entity (id, title, poster, duration, country, "releaseDate", popularity, "directorId", "genreId", "youtubeTrailerId") values ('0c345602-453e-49ae-9218-7d8370107e50','Admission','https://youtube.com/eget/semper/rutrum/nulla/nunc.json',3,'China','1925-06-03',1,'f69f2723-a4ea-495e-9bc1-4be019a6be33','95f75c58-d439-4897-99a1-6397f64bdd79','89bdf071-4b61-49aa-9f2a-2b500e492de2');
 
---MovieActorEntity
+--Movie-Actor
 
 insert into movie_entity_actors_actor_entity values ('74d10db7-03b8-4050-a663-11814f611e52','fa540a31-2c26-42dc-afb5-2cd30af6a88e');
 insert into movie_entity_actors_actor_entity values ('06393d9b-e85d-44e7-94e4-90e6804e0336','4499e858-3ea4-47c3-8515-32f85d32bbc2');
@@ -542,9 +538,9 @@ insert into movie_entity_actors_actor_entity values ('c4019bf8-5672-4f79-8fbe-fa
 insert into movie_entity_actors_actor_entity values ('4c00b960-8c05-48ef-90db-7565c01db3c1','bbf3a11b-b9a8-4890-93bc-4ad92bbe5ea9');
 insert into movie_entity_actors_actor_entity values ('0c345602-453e-49ae-9218-7d8370107e50','40be5aa9-ca5b-4e8d-9332-390f9c156449');
 
---PlatformMovie
+--Platform Movie
 
---insert into platform_entity_movies_movie_entity values ('e163fb4b-1d8f-4243-b6f0-e1aab5c16613','74d10db7-03b8-4050-a663-11814f611e52');
+insert into platform_entity_movies_movie_entity values ('e163fb4b-1d8f-4243-b6f0-e1aab5c16613','74d10db7-03b8-4050-a663-11814f611e52');
 insert into platform_entity_movies_movie_entity values ('b83d2206-d9da-4612-b8fe-e26dd605b999','06393d9b-e85d-44e7-94e4-90e6804e0336');
 insert into platform_entity_movies_movie_entity values ('a88e394f-fa04-4502-98bb-b6b511bf75ef','48fe667d-1c84-438d-9f2d-e6fd18a1f3fe');
 insert into platform_entity_movies_movie_entity values ('d3bcd8d7-981a-4fc7-8a5c-b33fe55933d3','156c889c-4012-487a-aada-4d255b000d7d');
@@ -645,7 +641,7 @@ insert into platform_entity_movies_movie_entity values ('a88e394f-fa04-4502-98bb
 insert into platform_entity_movies_movie_entity values ('d3bcd8d7-981a-4fc7-8a5c-b33fe55933d3','4c00b960-8c05-48ef-90db-7565c01db3c1');
 insert into platform_entity_movies_movie_entity values ('f59384e2-bec8-4113-8eb2-c41a67289c04','0c345602-453e-49ae-9218-7d8370107e50');
 
---ReviewEntity
+--Review
 
 insert into review_entity (id, text, score, creator, "movieId") values ('76c72828-ad0f-4e2a-acb2-0adc27da969e', 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst.', 2, 'Ginny Bellin', '74d10db7-03b8-4050-a663-11814f611e52');
 insert into review_entity (id, text, score, creator, "movieId") values ('33d72b63-3baa-430c-a54e-30af6be615f5', 'Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus.', 4, 'Sibel Gooly', '06393d9b-e85d-44e7-94e4-90e6804e0336');
@@ -751,12 +747,3 @@ insert into review_entity (id, text, score, creator, "movieId") values ('e599113
 --Update poster
 
 update movie_entity set poster = 'http://dummyimage.com/107x100.png/ff4444/ffffff';
-    `;
-
-    public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(this.migration);
-    }
-
-    public async down(queryRunner: QueryRunner): Promise<void> {
-    }
-}
