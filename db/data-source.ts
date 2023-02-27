@@ -13,7 +13,7 @@ export const dataSourceOptions: DataSourceOptions = {
     dropSchema: true,
     synchronize: true,
     migrations: ['dist/shared/migrations/**/*{.ts,.js}'],
-    migrationsRun: true,
+    migrationsRun: false,
 };
 
 const dataSource = new DataSource(dataSourceOptions);
