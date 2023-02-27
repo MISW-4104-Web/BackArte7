@@ -37,7 +37,7 @@ import { dataSourceOptions } from 'db/data-source';
     MoviePlatformModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: process.env.DB_HOST || 'localhost',
       port: 5432,
       username: 'postgres',
       password: 'postgres',
