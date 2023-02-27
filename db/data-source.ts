@@ -4,7 +4,7 @@ import { DataSource, DataSourceOptions } from "typeorm";
 
 export const dataSourceOptions: DataSourceOptions = {
     type: 'postgres',
-      host: 'backarte7-db-1',
+      host: 'db',
       port: 5432,
       username: 'postgres',
       password: 'postgres',
