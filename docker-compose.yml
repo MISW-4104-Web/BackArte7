@@ -7,7 +7,7 @@ services:
     volumes:
       - /usr/src/app
     environment:
-      DB_HOST: "database"
+      DB_HOST: "db"
     ports:
       - "3000:3000"
     depends_on:
@@ -19,7 +19,6 @@ services:
 
   db:
     image: postgres
-    container_name: database
     environment:
       - POSTGRES_DB=arte7
       - POSTGRES_USER=postgres
