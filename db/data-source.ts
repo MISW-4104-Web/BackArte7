@@ -4,16 +4,16 @@ import { DataSource, DataSourceOptions } from "typeorm";
 
 export const dataSourceOptions: DataSourceOptions = {
     type: 'postgres',
-      host: 'db',
-      port: 5432,
-      username: 'postgres',
-      password: 'postgres',
-      database: 'arte7',
-      entities: ['dist/**/*.entity.js'],
-      dropSchema: true,
-      synchronize: true,
-      migrations: ['dist/shared/migrations/**/*{.ts,.js}'],
-      migrationsRun: true,
+    host: process.env.DB_HOST || 'localhost',
+    port: 5432,
+    username: 'postgres',
+    password: 'postgres',
+    database: 'arte7',
+    entities: ['dist/**/*.entity.js'],
+    dropSchema: true,
+    synchronize: true,
+    migrations: ['dist/shared/migrations/**/*{.ts,.js}'],
+    migrationsRun: true,
 };
 
 const dataSource = new DataSource(dataSourceOptions);
