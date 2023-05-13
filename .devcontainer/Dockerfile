@@ -1,13 +1,11 @@
 FROM node:alpine
 
-# WORKDIR /src/app
+WORKDIR /usr/src/app
 
-# RUN  pwd && ls
+COPY package.json .
 
-# COPY package.json .
+RUN npm install --quiet
 
-# RUN npm install --quiet
+COPY . .
 
-# COPY . .
-
-# CMD ["npm", "run", "start"]
+CMD ["npm", "run", "start"]
