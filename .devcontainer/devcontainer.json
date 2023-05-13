@@ -2,7 +2,6 @@
     "name": "NodeJs & PostgreSQL", 
     "dockerComposeFile": "docker-compose.yml", 
     "service": "web",
-    "workspaceFolder": "/src/app", 
     "forwardPorts": [3000, 5432], 
 
     "customizations": {
