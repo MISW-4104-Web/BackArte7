@@ -1,0 +1,32 @@
+{
+    "name": "NodeJs & PostgreSQL", 
+    "dockerComposeFile": "docker-compose.yml", 
+    "service": "web",
+    "workspaceFolder": "/src/app", 
+    "forwardPorts": [3000, 5432], 
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "mtxr.sqltools", 
+                "mtxr.sqltools-driver-pg"
+            ], 
+            "settings": {
+                "sqltools.connections": [
+                    {
+                        "name": "Container database", 
+                        "driver": "PostgreSQL", 
+                        "server": "localhost", 
+                        "port": 5432, 
+                        "database": "arte7" ,
+                        "username": "postgres", 
+                        "password": "postgres"
+                    }
+                ]
+            }
+        }
+    }, 
+
+    // "postCreateCommand": ""
+   
+}
