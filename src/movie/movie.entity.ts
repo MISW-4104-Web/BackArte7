@@ -6,6 +6,7 @@ import { GenreEntity } from '../genre/genre.entity';
 import { PlatformEntity } from '../platform/platform.entity';
 import { ReviewEntity } from '../review/review.entity';
 import { YoutubeTrailerEntity } from '../youtube-trailer/youtube-trailer.entity';
+import { PrizeEntity } from '../prize/prize.entity';
 
 @Entity()
 export class MovieEntity extends BaseEntity {
@@ -46,4 +47,7 @@ export class MovieEntity extends BaseEntity {
     @OneToOne(type => YoutubeTrailerEntity, youtubeTrailer => youtubeTrailer.movie)
     @JoinColumn()
     youtubeTrailer: YoutubeTrailerEntity;
+
+    @ManyToMany(type => PrizeEntity, prize => prize.movies)
+    prizes: PrizeEntity[];
 }
